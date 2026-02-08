@@ -6,6 +6,7 @@ enum AppTextStyle {
     case body
     case paragraph
     case caption
+    case button
 
     var size: CGFloat {
         switch self {
@@ -14,6 +15,7 @@ enum AppTextStyle {
         case .body: return 14
         case .paragraph: return 13
         case .caption: return 11
+        case .button: return 16
         }
     }
 
@@ -24,6 +26,7 @@ enum AppTextStyle {
         case .body: return .regular
         case .paragraph: return .regular
         case .caption: return .regular
+        case .button: return .medium
         }
     }
 }
