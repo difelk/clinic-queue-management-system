@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct ContentView: View {
-
     @State private var selectedFruit = ""
 
     let fruits = [
@@ -18,52 +17,48 @@ struct ContentView: View {
     ]
 
     var body: some View {
-        VStack(spacing: 16) {
-
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-
-            Text("Hello, world!")
-                .font(.app(.button))
-
-            PrimaryButton(
-                title: "Submit",
-                backgroundColor: .red,
-                textColor: .white
-            ) {
-                print("Submitted")
-            }
-
-            OutlineButton(title: "Cancel") {
-                print("Cancelled")
-            }
-
-            InputField(placeholder: "Enter FirstName")
-
-            Dropdown(
-                placeholder: "Select fruit",
-                options: fruits,
-                selectedValue: $selectedFruit,
-            )
-            
-            
-            
-            IconInputField(
-                placeholder: "Enter email",
-                defaultValue: "",
-                iconName: "SearchIcon",
-                action: {
-                    print("Input changed")
-                }
-            )
-            .padding(.horizontal)
-            
+        HeaderSection(title: "Landing Page") {
+            print("Back tapped")
         }
-        .padding()
-    }
-}
+        
+        ZStack(alignment: .top) {
+            ScrollView {
+                VStack(spacing: 16) {
+                    Color.clear.frame(height: 80)
+                    PrimaryButton(
+                        title: "Submit",
+                        backgroundColor: .red,
+                        textColor: .white
+                    ) {
+                        print("Submitted")
+                    }
 
-#Preview {
-    ContentView()
+                    OutlineButton(title: "Cancel") {
+                        print("Cancelled")
+                    }
+
+                    InputField(placeholder: "Enter FirstName")
+
+                    Dropdown(
+                        placeholder: "Select fruit",
+                        options: fruits,
+                        selectedValue: $selectedFruit
+                    )
+
+                    IconInputField(
+                        placeholder: "Enter email",
+                        defaultValue: "",
+                        iconName: "SearchIcon",
+                        action: { print("Input changed") }
+                    )
+                    
+                    Spacer()
+                }
+                .padding()
+            }
+
+
+        }
+        .edgesIgnoringSafeArea(.top)
+    }
 }
