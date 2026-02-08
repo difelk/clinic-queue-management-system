@@ -14,17 +14,29 @@
 		7B29B8952F382325000BA0B1 /* Exceptions for "ClinicQueue" folder in "ClinicQueue" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
+				.gitignore,
 				Info.plist,
 			);
 			target = 7B0C6D6B2F37AAC70056D51E /* ClinicQueue */;
 		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
+/* Begin PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet section */
+		7B508CEC2F382CC3001CA563 /* Exceptions for "ClinicQueue" folder in "Compile Sources" phase from "ClinicQueue" target */ = {
+			isa = PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet;
+			buildPhase = 7B0C6D682F37AAC70056D51E /* Sources */;
+			membershipExceptions = (
+				.gitignore,
+			);
+		};
+/* End PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		7B0C6D6E2F37AAC70056D51E /* ClinicQueue */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
 				7B29B8952F382325000BA0B1 /* Exceptions for "ClinicQueue" folder in "ClinicQueue" target */,
+				7B508CEC2F382CC3001CA563 /* Exceptions for "ClinicQueue" folder in "Compile Sources" phase from "ClinicQueue" target */,
 			);
 			path = ClinicQueue;
 			sourceTree = "<group>";
