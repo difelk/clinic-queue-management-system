@@ -7,6 +7,7 @@ struct PrimaryButton: View {
     var backgroundColor: Color = .white
     var textColor: Color = .white
     var cornerRadius: CGFloat = 100
+    var maxWidth: CGFloat = .infinity
     var action: () -> Void
     
     
@@ -20,6 +21,7 @@ struct PrimaryButton: View {
                 .frame(maxWidth: .infinity)
                 .background(backgroundColor)
                 .cornerRadius(cornerRadius)
+                .frame(maxWidth: maxWidth )
         }
         
     }
