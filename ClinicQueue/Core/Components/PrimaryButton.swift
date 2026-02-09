@@ -4,7 +4,7 @@ import SwiftUI
 struct PrimaryButton: View {
     
     var title: String
-    var backgroundColor: Color = .white
+    var backgroundColor: Color = AppColors.primary
     var textColor: Color = .white
     var cornerRadius: CGFloat = 100
     var maxWidth: CGFloat = .infinity
