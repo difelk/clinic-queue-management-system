@@ -10,6 +10,7 @@ enum AppColors {
     static let error = Color(hex: "FF3B30")
     static let placeholder = Color(hex: "A5A5A5")
     static let border = Color(hex: "E8EBED")
+    static let lableColor = Color(hex: "C1C0C0")
 }
 
 

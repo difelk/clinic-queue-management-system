@@ -11,22 +11,19 @@ struct HeaderSection: View {
                 .font(.app(.heading))
                 .frame(maxWidth: .infinity)
                 .multilineTextAlignment(.center)
-            
+
             HStack {
-                IconButton(
-                    buttonType: "back"
-                )  {
-                    dismiss() 
+                IconButton(buttonType: "back") {
+                    dismiss()
                 }
-                
                 Spacer()
             }
-            .padding(.horizontal)
         }
-        .frame(height: 40)
-        .padding(.top, 12)
+        .padding(.horizontal, 16)
+        .frame(height: 60)
+        .padding(.top, safeAreaTop)
+        .background(Color.white)
     }
-
 
     private var safeAreaTop: CGFloat {
         guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene else { return 0 }
