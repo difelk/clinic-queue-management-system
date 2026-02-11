@@ -7,22 +7,18 @@
 
 import SwiftUI
 
-struct DisplayCard: View{
-    
+struct DisplayCard: View {
     let props: DoctorCardData
-    
-    
-    var body: some View{
-        
+    let onButtonTap: () -> Void  
+
+    var body: some View {
         HStack(alignment: .center, spacing: 20) {
 
-            VStack {
-                Image("SearchIcon")
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 40, height: 40)
-            }
-            .padding(12)
+            Image(props.icon)
+                .resizable()
+                .scaledToFit()
+                .frame(width: 40, height: 40)
+                .padding(12)
 
             VStack(alignment: .leading, spacing: 10) {
 
@@ -46,9 +42,13 @@ struct DisplayCard: View{
                     Text(props.label2Text)
                 }
                 .font(.app(.caption))
-
-                PrimaryButton(title: props.buttonText, maxWidth: 120) {
-                    print("clicked")
+                if !props.buttonText.isEmpty {
+                    PrimaryButton(
+                        title: props.buttonText,
+                        maxWidth: 120
+                    ) {
+                        onButtonTap()
+                    }
                 }
             }
         }
@@ -56,17 +56,9 @@ struct DisplayCard: View{
         .padding(12)
         .background(
             RoundedRectangle(cornerRadius: 10)
-                .fill(Color.white)
+                .fill(props.cardBackground)
         )
-        .shadow(color: .gray.opacity(0.4), radius: 8, x: 0, y: 7)
-
-        
+        .shadow(color: .gray.opacity(0.2), radius: 5, x: 0, y: 6)
     }
-    
-    
-    
-    
-    
-    
-    
 }
+    

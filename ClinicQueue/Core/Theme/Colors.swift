@@ -11,6 +11,7 @@ enum AppColors {
     static let placeholder = Color(hex: "A5A5A5")
     static let border = Color(hex: "E8EBED")
     static let lableColor = Color(hex: "C1C0C0")
+    static let cardBackground = Color(hex: "F2F9F7")
 }
 
 

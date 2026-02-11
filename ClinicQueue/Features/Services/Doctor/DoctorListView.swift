@@ -71,6 +71,9 @@ struct DoctorListView: View {
     ]
     
     
+    @State private var selectedDoctor: DoctorCardData?
+    @State private var navigate = false
+    
     var body: some View {
       
         ZStack(alignment: .top) {
@@ -107,12 +110,27 @@ struct DoctorListView: View {
                 
                 VStack(spacing: 12) {
                     ForEach(doctorCards) { card in
-                        VStack(spacing: 12) {
-                            ForEach(doctorCards) { card in
-                                DisplayCard(props: card)
-                            }
+                        DisplayCard(props: card) {
+                            selectedDoctor = card
+                            navigate = true
                         }
-                        .padding(.top, 20)
+                    }
+                }.navigationDestination(isPresented: $navigate) {
+                    if let doctor = selectedDoctor {
+                        
+                        AppointmentView(doctor: DoctorCardData(
+                            icon: doctor.icon,
+                            iconSize: doctor.iconSize,
+                            title: doctor.title,
+                            subTitle: doctor.subTitle,
+                            description1: doctor.description1,
+                            description2: doctor.description2,
+                            label1: doctor.label1,
+                            label1Text: doctor.label1Text,
+                            label2: doctor.label2,
+                            label2Text: doctor.label2Text,
+                            buttonText: ""
+                        ))
                     }
                 }
                 .padding(.top, 20)
