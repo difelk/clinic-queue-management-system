@@ -20,4 +20,5 @@ struct DoctorCardData: Identifiable {
     let label2: String
     let label2Text: String
     let buttonText: String
+    let cardBackground: Color = AppColors.cardBackground
 }
