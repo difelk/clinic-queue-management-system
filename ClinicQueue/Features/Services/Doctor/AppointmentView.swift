@@ -48,9 +48,70 @@ struct AppointmentView: View{
                     )
                 }
             }
+            
+            
+            VStack(spacing:12){
+                Text("Payment Details").font(.app(.heading)).frame(maxWidth: .infinity, alignment: .leading).padding(.bottom, 8)
+                
+                HStack {
+                    Text("Consultation")
+                        .font(.app(size: .lg, weight: .medium))
+                        .foregroundColor(.gray)
+
+                    Spacer()
+
+                    Text("$59.00")
+                        .font(.app(size: .lg, weight: .bold))
+                        .foregroundColor(.gray)
+                }.padding(.bottom, 8)
+                
+                
+                HStack {
+                    Text("Admin Fee")
+                        .font(.app(size: .lg))
+                        .foregroundColor(.gray)
+
+                    Spacer()
+
+                    Text("$01.00")
+                        .font(.app(size: .lg, weight: .bold))
+                        .foregroundColor(.gray)
+                }.padding(.bottom, 8)
+                
+                HStack {
+                    Text("Additional Discount")
+                        .font(.app(size: .lg, weight: .medium))
+                        .foregroundColor(.gray)
+
+                    Spacer()
+
+                    Text("_")
+                        .font(.app(size: .lg, weight: .bold))
+                        .foregroundColor(.gray)
+                }.padding(.bottom, 8)
+                
+                
+                HStack {
+                    Text("Total")
+                        .font(.app(size: .lg, weight: .bold))
+                        .foregroundColor(.gray)
+
+                    Spacer()
+
+                    Text("$70.00")
+                        .font(.app(size: .lg, weight: .bold))
+                        .foregroundColor(.gray)
+                }.padding(.bottom, 8)
+                
+            } .padding(.top, 20)
+            
+            
+            
         }
         
         
     }
     
 }
+
+
