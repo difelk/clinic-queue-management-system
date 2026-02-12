@@ -16,6 +16,7 @@ enum AppTextStyle {
         case .paragraph: return 13
         case .caption: return 11
         case .button: return 16
+        
         }
     }
 
@@ -44,8 +45,35 @@ enum AppFontWeight {
     }
 }
 
+
+enum AppTextSize {
+    case xs
+    case sm
+    case md
+    case lg
+    case xl
+    case xxl
+
+    var value: CGFloat {
+        switch self {
+        case .xs:  return 11
+        case .sm:  return 13
+        case .md:  return 14
+        case .lg:  return 16
+        case .xl:  return 20
+        case .xxl: return 24
+        }
+    }
+}
+
+
+
 extension Font {
     static func app(_ style: AppTextStyle) -> Font {
         .custom(style.weight.fontName, size: style.size)
+    }
+
+    static func app(size: AppTextSize, weight: AppFontWeight = .regular) -> Font {
+        .custom(weight.fontName, size: size.value)
     }
 }
