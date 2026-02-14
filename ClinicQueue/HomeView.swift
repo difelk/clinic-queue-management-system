@@ -5,20 +5,13 @@ struct HomeView: View {
 
     var body: some View {
         NavigationStack {
-            ScrollView {
+            VStack {
                 VStack(spacing: 16) {
-
-                    PrimaryButton(title: "Continue") {
-                        navigateToDoctor = true
-                    }
-                    .padding()
-
+                  LandingView()
                 }
                 .padding()
             }
-            .safeAreaInset(edge: .top) {
-                HeaderSection(title: "Landing Page")
-            }
+          
             .navigationDestination(isPresented: $navigateToDoctor) {
                 DoctorListView()
                 .padding(.horizontal, 16)

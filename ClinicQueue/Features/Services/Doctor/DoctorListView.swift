@@ -145,3 +145,9 @@ struct DoctorListView: View {
         }
     }
 }
+
+struct DoctorListView_Previews: PreviewProvider {
+    static var previews: some View {
+        DoctorListView()
+    }
+}
