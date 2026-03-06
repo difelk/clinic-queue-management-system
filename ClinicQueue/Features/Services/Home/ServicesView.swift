@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct ServicesView: View {
-
+   
     private let services: [Service] = [
         Service(
             icon: "stethoscope",
@@ -57,9 +57,11 @@ struct ServicesView: View {
                         Spacer()
 
                         HStack(spacing: 16) {
-                            Image(systemName: "bell")
-                                .font(.system(size: 20))
-
+                            NavigationLink(destination: NotificationView()) {
+                                Image(systemName: "bell")
+                                    .font(.system(size: 20))
+                                    .foregroundColor(.black)
+                            }
                             Circle()
                                 .fill(Color.gray.opacity(0.3))
                                 .frame(width: 36, height: 36)
