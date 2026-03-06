@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ServicesView: View {
     @State private var navigateToDoctorList = false
+    @State private var selectedCategory: String?
     
     let specialties = [
         "Doctor",
@@ -56,82 +57,90 @@ struct ServicesView: View {
     ]
     
     var body: some View {
-        VStack(spacing: 0) {
-            HStack(spacing: 12) {
-                Text("Find your desire health solution")
-                    .font(.title)
-                    .bold()
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                
-                Image(systemName: "bell")
-                    .font(.system(size: 35))
-                
-                Image(systemName: "person.crop.circle")
-                    .font(.system(size: 50))
-            }
-            .padding(0)
-            
-            ScrollView {
-                VStack(alignment: .center, spacing: 20) {
-                    Spacer()
-                    IconInputField(
-                        placeholder: "Find a Doctor",
-                        defaultValue: "",
-                        iconName: "SearchIcon",
-                        action: { print("Input changed") }
-                    )
-                    Spacer()
-                }
-                
-                HStack(alignment: .center, spacing: 20) {
-                    Text("Upcoming Schedule")
-                        .font(.headline)
+        NavigationStack {
+            VStack(spacing: 0) {
+                HStack(spacing: 12) {
+                    Text("Find your desire health solution")
+                        .font(.title)
                         .bold()
                         .frame(maxWidth: .infinity, alignment: .leading)
-                    Text("See all")
-                        .font(.footnote)
-                        .bold()
                     
+                    Image(systemName: "bell")
+                        .font(.system(size: 35))
                     
+                    Image(systemName: "person.crop.circle")
+                        .font(.system(size: 50))
                 }
-                ZStack {
-                    ForEach(doctorCards) { card in
-                        DisplayCard(props: card) {
-                            selectedDoctor = card
-                            navigate = true
+                .padding(0)
+                
+                ScrollView {
+                    VStack(alignment: .center, spacing: 20) {
+                        Spacer()
+                        IconInputField(
+                            placeholder: "Find a Doctor",
+                            defaultValue: "",
+                            iconName: "SearchIcon",
+                            action: { print("Input changed") }
+                        )
+                        Spacer()
+                    }
+                    
+                    HStack(alignment: .center, spacing: 20) {
+                        Text("Upcoming Schedule")
+                            .font(.headline)
+                            .bold()
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                        Text("See all")
+                            .font(.footnote)
+                            .bold()
+                        
+                        
+                    }
+                    ZStack {
+                        ForEach(doctorCards) { card in
+                            DisplayCard(props: card) {
+                                selectedDoctor = card
+                                navigate = true
                                 
+                            }
+                            
                         }
                         
                     }
+                    Spacer()
                     
-                }
-                Spacer()
-                
-                HStack(alignment: .center,) {
-              
-                    Text("Servies")
-                    
-                        .font(.headline)
-                        .bold()
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                   
-                  
-                }
-                
-                LazyVGrid(columns: columns, spacing: 18) {
-                    ForEach(specialties, id: \.self) { specialty in
-                        CategoryButton(title: specialty, icon: "SearchIcon", iconWidth: 38) {
-                            print("category clicked: \(specialty)")
-                        }
-                        .frame(maxHeight: .infinity, alignment: .top)
+                    HStack(alignment: .center,) {
+                        
+                        Text("Servies")
+                        
+                            .font(.headline)
+                            .bold()
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                        
+                        
                     }
+                    
+                    LazyVGrid(columns: columns, spacing: 18) {
+                        ForEach(specialties, id: \.self) { specialty in
+                            CategoryButton(
+                                title: specialty,
+                                icon: "SearchIcon",
+                                iconWidth: 38
+                            ) {
+                                selectedCategory = specialty
+                            }
+                        }
+                    }
+                    .navigationDestination(item: $selectedCategory) { category in
+                        if category == "Doctor" {
+                            DoctorListView()
+                        }
+                    }
+                    
                 }
-                
-                
-                
             }
+            .padding(10)
         }
-        .padding(10)
     }
 }
 
