@@ -15,23 +15,33 @@ struct PaymentDetailRow: Identifiable {
 
 struct PaymentDetails: View {
     let rows: [PaymentDetailRow]
-    
+
     var body: some View {
-        VStack(alignment: .leading, spacing: 6) {
+        VStack(alignment: .leading, spacing: 20) {
+
+            // Static heading
             Text("Payment Details")
                 .font(.system(size: 20, weight: .bold))
-            
+
             ForEach(rows) { row in
                 HStack {
                     Text(row.label)
-                        .font(.system(size: 16))
-                        .foregroundColor(Color("C0C0C0"))
+                        .font(.system(size: 18))
+                        .foregroundColor(
+                            row.label.lowercased() == "total"
+                            ? .black
+                            : AppColors.lableColor
+                        )
+
                     Spacer()
+
                     Text(row.value)
-                        .font(.system(size: 16))
-                        .foregroundColor(Color("404040"))
+                        .font(.system(size: 18, weight: row.label.lowercased() == "total" ? .semibold : .regular))
+                        .foregroundColor(.black)
                 }
+                .frame(maxWidth: .infinity)
             }
         }
+        .frame(maxWidth: .infinity, alignment: .leading)
     }
 }

@@ -21,7 +21,7 @@ struct InfoCard: View {
     var body: some View {
         HStack(alignment: .center, spacing: 20) {
             
-            // LEFT IMAGE
+ 
             data.image
                 .resizable()
                 .scaledToFill()
@@ -30,10 +30,10 @@ struct InfoCard: View {
                 .background(Color.gray.opacity(0.3))
                 .clipShape(Circle())
             
-            // RIGHT SECTION
+  
             VStack(alignment: .leading, spacing: 8) {
                 
-                // displayTextSection
+
                 VStack(alignment: .leading, spacing: 2) {
                     Text(data.heading)
                         .font(.system(size: 16, weight: .semibold))
@@ -44,7 +44,7 @@ struct InfoCard: View {
                         .foregroundColor(AppColors.placeholder)
                 }
                 
-                // displayTextSubSection
+ 
                 VStack(alignment: .leading, spacing: 4) {
                     
                     if let queue = data.activeQueueCount {
